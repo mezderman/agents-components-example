@@ -5,7 +5,5 @@ ROUTER_PROMPT_TEMPLATE = """Choose the most suitable action for the following qu
     Available choices:
     {choices_str}
 
-    Instructions:
-    {instructions}
 
     """ 

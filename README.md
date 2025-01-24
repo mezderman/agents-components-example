@@ -1,4 +1,4 @@
-# Agent Building Blocks Examples
+# Agent Components Examples
 
 This repository contains examples of various building blocks and patterns commonly used in building AI agent systems. Each example demonstrates a specific concept or pattern that can be used as a foundation for more complex agent architectures.
 

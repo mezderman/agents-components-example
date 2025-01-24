@@ -13,7 +13,6 @@ class RouterQuery:
         self.model = model
         self.choices = choices
         self.choices_str = "\n".join(f"- {choice['text']} (id: {choice['id']})" for choice in choices)
-        self.instructions = "\n".join(f"- {choice['instruction']}" for choice in choices)
 
         # Initialize OpenAI client
         self.client = OpenAI()
@@ -28,8 +27,7 @@ class RouterQuery:
     def route(self, query: str) -> Choice:
         prompt = ROUTER_PROMPT_TEMPLATE.format(
             query=query,
-            choices_str=self.choices_str,
-            instructions=self.instructions
+            choices_str=self.choices_str
         )
         completion = self.client.beta.chat.completions.parse(
             model=self.model,

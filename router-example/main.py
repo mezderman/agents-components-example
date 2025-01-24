@@ -14,13 +14,11 @@ def main():
     choices = [
         {
             "id": "specific", 
-            "text": "Useful for answering questions about specific sections of the document",
-            "instruction": "Pick specific if the query seeks detailed or pinpointed information"
+            "text": "Pick 'specific' if the query seeks detailed or pinpointed information"
         },
         {
             "id": "summary", 
-            "text": "Useful for questions that ask for a summary of the whole document",
-            "instruction": "Pick summary if the query seeks a broad overview or general understanding"
+            "text": "Pick 'summary' if the query seeks a broad overview or general understanding"
         }
     ]
 
@@ -28,9 +26,9 @@ def main():
 
     # query = "What are the main points of the document?"
     # query = "What are the highlights of this article?"
-    # query = "What would you tell someone who hasn’t read this yet?"
+    query = "What would you tell someone who hasn’t read this yet?"
     # query = "What is the name of the event?"
-    query = "Who is the main person mentioned in the document?"
+    # query = "Who is the main person mentioned in the document?"
     
     result = router.route(query)
     print(result)
