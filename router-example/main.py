@@ -26,8 +26,8 @@ def main():
 
     # query = "What are the main points of the document?"
     # query = "What are the highlights of this article?"
-    query = "What would you tell someone who hasn’t read this yet?"
-    # query = "What is the name of the event?"
+    # query = "What would you tell someone who hasn’t read this yet?"
+    query = "What is the name of the event?"
     # query = "Who is the main person mentioned in the document?"
     
     result = router.route(query)

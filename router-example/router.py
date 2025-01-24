@@ -4,7 +4,6 @@ from prompts import ROUTER_PROMPT_TEMPLATE
 
 class Choice(BaseModel):
     id: str = Field(description="The ID of the selected choice")
-    choice: str = Field(description="The selected choice")
     reason: str = Field(description="The reason for selecting this choice")
 
 class RouterQuery:

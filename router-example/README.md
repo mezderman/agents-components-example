@@ -45,8 +45,8 @@ Example output:
 
 ```json
 {
-"choice_id": "specific",
-"explanation": "This query asks about a specific detail (the main person) from the document..."
+"id": "summary",
+"reason": "The query specifically asks for the name of an event, which is a request for detailed and precise information rather than a broad or general overview"
 }
 ```
 
@@ -56,8 +56,7 @@ This output indicates that the query was routed to the "specific" choice, and th
 
 You can customize the routing choices by modifying the `choices` list in `main.py`. Each choice should have:
 - `id`: Unique identifier for the choice
-- `text`: Description of what the choice is useful for
-- `instruction`: Guidance for when to select this choice
+- `text`: Guidance for when to select this choice
 
 ## License
 
