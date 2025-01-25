@@ -1,17 +1,10 @@
 from pydantic import BaseModel, Field
 from openai import OpenAI
-from prompts import ROUTER_PROMPT_TEMPLATE
 import instructor
-from enum import Enum
+from models import QueryCategory
 
-class QueryCategory(str, Enum):
-        """Enumeration of categories for incoming query.
-        Pick specific if the query seeks detailed or pinpointed information
-        Pick summary if the query seeks a broad overview or general understanding
-        """
 
-        SPECIFIC = "specific"
-        SUMMARY = "summary"
+
 
 class Choice(BaseModel):
     category: QueryCategory
@@ -24,19 +17,8 @@ class RouterQuery:
 
         self.client = instructor.from_openai(OpenAI())
         self.model = "gpt-4o-2024-08-06"
-
-    def _format_choices(self) -> str:
-        return "\n".join(f"- {choice['text']} (id: {choice['id']})" for choice in self.choices)
-    
-    def _validate_choice(self, choice: Choice) -> bool:
-        valid_ids = {c['id'] for c in self.choices}
-        return choice.id in valid_ids
         
     def route(self, query: str) -> Choice:
-        # prompt = ROUTER_PROMPT_TEMPLATE.format(
-        #     query=query,
-        #     choices_str=self.choices_str
-        # )
        
         choice = self.client.chat.completions.create(
             model=self.model,
