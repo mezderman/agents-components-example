@@ -1,9 +1,7 @@
-import os
 from dotenv import load_dotenv
-from openai import OpenAI
 from router import RouterQuery
-from models import QueryCategory
 from pydantic import BaseModel, Field
+from enum import Enum
 
 
 # Load environment variables
@@ -11,13 +9,27 @@ load_dotenv()
 
 
 def main():
-    # query = "What are the main points of the document?"
+    query = "What are the main points of the document?"
     # query = "What are the highlights of this article?"
-    query = "What would you tell someone who hasn't read this yet?"
     # query = "What is the name of the event?"
     # query = "Who is the main person mentioned in the document?"
+    # query = "What is the name of the event?"
+    # query = "I have question about billings?"
 
-    router = RouterQuery()
+    class Categories(str, Enum):
+        """Enumeration of categories for incoming query.
+        Pick specific if the query seeks detailed or pinpointed information
+        Pick summary if the query seeks a broad overview or general understanding
+        Pick other if the query if doesnt fit into specific or summary
+        """
+        SPECIFIC = "specific"
+        SUMMARY = "summary"
+        OTHER = "other"
+    
+    
+
+    router = RouterQuery(Categories)
+
     result = router.route(query)
     print(result)
    
